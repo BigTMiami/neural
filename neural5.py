@@ -1,12 +1,10 @@
-import tensorflow as tf
-from tensorflow.keras.datasets import cifar10
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten
 from tensorflow.keras.layers import Conv2D, MaxPooling2D
 import pickle
 import numpy as np
 from tensorflow.keras.callbacks import TensorBoard
+import datetime
 
 NAME = 'Cats-vs-Dogs-CNN'
 
@@ -51,3 +49,7 @@ model.fit(X, y,
           batch_size=32,
           epochs=1,
           validation_split=.3)
+
+datestamp = datetime.datetime.now()
+model_filename = f'{NAME}_{datestamp:%Y_%m_%d_%H:%M}_first_testing.model'
+model.save(model_filename)
