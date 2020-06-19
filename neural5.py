@@ -50,5 +50,6 @@ model.fit(X, y,
           epochs=1,
           validation_split=.3)
 
-model_filename = 'first_testing.model'
+datestamp = datetime.datetime.now()
+model_filename = f'{NAME}_{datestamp:%Y_%m_%d_%H:%M}_first_testing.model'
 model.save(model_filename)
